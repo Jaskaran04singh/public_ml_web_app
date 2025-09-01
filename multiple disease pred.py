@@ -10,8 +10,8 @@ import streamlit as st
 
 # Load models with error handling
 try:
-    diabetes_model = pickle.load(open("diabetpro.sav", 'rb'))
-    heart_model = pickle.load(open("heart_disease.sav", 'rb'))
+    diabetes_model = pickle.load(open("diabetpro.sav",'rb'))
+    heart_model = pickle.load(open("heart_disease.sav",'rb'))
 except:
     st.error("Model files not found. Please make sure 'diabetpro.sav' and 'heart_disease.sav' are in the same directory.")
     st.stop()
@@ -155,3 +155,4 @@ st.markdown("""
     }
 </style>
 """, unsafe_allow_html=True)
+
