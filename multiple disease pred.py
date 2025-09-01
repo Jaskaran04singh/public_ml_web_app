@@ -7,7 +7,6 @@ Multiple Disease Prediction Web App
 import numpy as np
 import pickle
 import streamlit as st
-from streamlit_option_menu import option_menu
 
 # Load models with error handling
 try:
@@ -29,15 +28,14 @@ def heart_prediction(input_data):
     prediction = heart_model.predict(input_data_reshaped)
     return "heart disease" if prediction[0] == 1 else "no heart disease"
 
-# Sidebar navigation
-with st.sidebar:
-    selected = option_menu("Multiple Disease Prediction System",
-                          ['Diabetes Prediction', 'Heart Disease Prediction'],
-                          icons=['activity', 'heart'],
-                          default_index=0)
-    
-    st.markdown("---")
-    st.info("This app predicts the likelihood of diabetes or heart disease based on input parameters.")
+# Custom sidebar navigation (replacement for streamlit_option_menu)
+st.sidebar.title("Multiple Disease Prediction System")
+selected = st.sidebar.radio("Select Prediction Type", 
+                           ['Diabetes Prediction', 'Heart Disease Prediction'],
+                           index=0)
+
+st.sidebar.markdown("---")
+st.sidebar.info("This app predicts the likelihood of diabetes or heart disease based on input parameters.")
 
 # Diabetes Prediction Page
 if selected == 'Diabetes Prediction':
@@ -137,8 +135,8 @@ elif selected == 'Heart Disease Prediction':
                 st.error(f"Result: The patient has {diagnosis}")
             else:
                 st.success(f"Result: The patient has {diagnosis}")
-        except:
-            st.error("Please enter valid numerical values for all fields.")
+        except Exception as e:
+            st.error(f"Please enter valid numerical values for all fields. Error: {str(e)}")
 
 # Add some styling
 st.markdown("""
