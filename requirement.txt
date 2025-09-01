@@ -1,4 +1,4 @@
-numpy==1.9.0
+numpy==2.2.6
 pickle-mixin==1.0.2
 streamlit=1.49.1
 streamlist-opttion-menu==0.4.0
