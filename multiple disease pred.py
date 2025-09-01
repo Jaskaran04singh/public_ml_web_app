@@ -10,8 +10,8 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 
 # Load models with relative paths (upload these files to Streamlit Cloud)
-loaded_model = pickle.load(open("diabetpro.sav", 'rb'))
-load_model2 = pickle.load(open("heart_disease.sav", 'rb'))
+loaded_model = pickle.load(open("diabetpro.sav",'rb'))
+load_model2 = pickle.load(open("heart_disease.sav",'rb'))
 
 def diabetes_prediction(input_data):
     input_data_as_numpy_array = np.asarray(input_data, dtype=float)
@@ -119,3 +119,4 @@ if selected == 'Heart Disease Prediction':
             diagnosis = "Please enter valid numeric values"
     
     st.success(diagnosis)
+
