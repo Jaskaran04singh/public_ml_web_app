@@ -10,7 +10,7 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 
 loaded_model=pickle.load(open("diabetpro.sav",'rb'))
-load_model2= pickle.load(open("heart_disease.sav",'rb'))
+loaded_model2= pickle.load(open("heart_disease.sav",'rb'))
 
 def diabetes_prediction(input_data):
     input_data_as_numpy_array=np.asarray(input_data)
@@ -123,3 +123,4 @@ if(selected=='Heart Disease Prediction'):
     st.success(diagnosis)      
 
          
+
